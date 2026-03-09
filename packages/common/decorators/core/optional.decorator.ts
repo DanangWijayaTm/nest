@@ -20,12 +20,12 @@ import { isUndefined } from '../../utils/shared.utils.js';
 export function Optional(): PropertyDecorator & ParameterDecorator {
   return (target: object, key: string | symbol | undefined, index?: number) => {
     if (!isUndefined(index)) {
-      const args = Reflect.getMetadata(OPTIONAL_DEPS_METADATA, target) || [];
+      const args = Reflect.getOwnMetadata(OPTIONAL_DEPS_METADATA, target) || [];
       Reflect.defineMetadata(OPTIONAL_DEPS_METADATA, [...args, index], target);
       return;
     }
     const properties =
-      Reflect.getMetadata(
+      Reflect.getOwnMetadata(
         OPTIONAL_PROPERTY_DEPS_METADATA,
         target.constructor,
       ) || [];
