@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { INestApplication } from '@nestjs/common';
 import * as http from 'http';
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../src/app.module.js';
 
 describe('Graceful Shutdown (Express)', () => {
   let app: INestApplication;
