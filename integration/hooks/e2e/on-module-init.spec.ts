@@ -150,9 +150,11 @@ describe('OnModuleInit', () => {
     const child = module.get(A);
     const parent = module.get(AHost);
     const composition = module.get(Composition);
-    expect(child.onModuleInit).toHaveBeenCalledBefore(parent.onModuleInit);
-    expect(parent.onModuleInit).toHaveBeenCalledBefore(
-      composition.onModuleInit,
+    expect(child.onModuleInit.mock.invocationCallOrder[0]).toBeLessThan(
+      parent.onModuleInit.mock.invocationCallOrder[0],
+    );
+    expect(parent.onModuleInit.mock.invocationCallOrder[0]).toBeLessThan(
+      composition.onModuleInit.mock.invocationCallOrder[0],
     );
   });
 });
